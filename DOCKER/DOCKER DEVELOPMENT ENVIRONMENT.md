@@ -109,3 +109,37 @@ http://localhost/svnadmin
 ```
 
 ![](assets/2022-07-26-16-01-58-image.png)
+
+- wsl ubuntu 20.04 설치 후 podman 설치
+
+```bash
+# 저장소 추가
+echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" |
+sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+
+curl -L "https://download.opensuse.org/repositories/devel:/kubic:\
+/libcontainers:/stable/xUbuntu_20.04/Release.key" | sudo apt-key add -
+
+# 시스템 업그레이드
+sudo apt-get update
+sudo apt-get -y upgrade
+
+# 업그레이드시 GPG 키 오류 발생시 아래 명령어로 키 등록
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <PUBKEY>
+
+# podman 설치
+sudo apt install podman
+```
+
+- wsl ubuntu 20.04 설치 후 podman 구동시 WARN 메세지 해결법
+
+```bash
+sudo chmod 4755 /usr/bin/newgidmap
+sudo chmod 4755 /usr/bin/newuidmap
+```
+
+- wsl ubuntu 20.04 cockpit error handling
+
+```bash
+
+```
